@@ -1,19 +1,23 @@
-# [Nome do projeto]
+# [Trabalho 1 FPAA - Exercício prático individual: Tempo de execução de algoritmos]
 
-[Escreva um ou dois  parágrafo resumindo o objetivo do seu projeto.]
+[Estudamos, durante as aulas da disciplina, como a complexidade de tempo (custo de execução) de um
+algoritmo pode impactar o tempo para a obtenção de uma solução para um problema computacional.
+O cálculo matemático da complexidade do algoritmo dá uma medida segura para compararmos
+algoritmos e seus comportamentos.
+Neste exercício, vamos comparar, na prática, as operações realizadas por dois algoritmos diferentes
+para o mesmo problema: ordenação. Iremos, ainda, tentar perceber que, utilizando dados aleatórios,
+a média das execuções tende para a média entre os melhores e piores casos.]
 
 ## Alunos integrantes da equipe
 
-* [Nome completo do aluno 1]
-* [Nome completo do aluno 2]
-* [Nome completo do aluno 3]
-* [Nome completo do aluno 4]
+* [Marcos Felipe Batista Muniz]
+
 
 ## Professores responsáveis
 
-* [Nome completo do professor 1]
-* [Nome completo do professor 2]
+* [Prof. João Caram]
+
 
 ## Instruções de utilização
 
-[Assim que a primeira versão do sistema estiver disponível, deverá complementar com as instruções de utilização. Descreva como instalar eventuais dependências e como executar a aplicação.]
+[]
