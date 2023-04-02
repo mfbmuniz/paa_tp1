@@ -2,22 +2,22 @@ public class SelectionSort {
 
     int iteracoes;
     int atribuicoes;
-    int comparacoes;
+    Long comparacoes;
     //entende-se trocas, trocar um valor de uma posiçao x com uma posiçao y, ignorando
     //o numero de atribuiçoes necessrias para fazer esta troca
-    int trocas;
+    Long trocas;
 
     public SelectionSort() {
         this.iteracoes =0;
         this.atribuicoes=0;
-        this.comparacoes=0;
-        this.trocas =0;
+        this.comparacoes=0L;
+        this.trocas =0L;
     }
 
 
 
-    public int[] sort(int[] requestedArray) {
-        int[] array = requestedArray.clone();
+    public Integer[] sort(Integer[] requestedArray) {
+        Integer[] array = requestedArray.clone();
         this.atribuicoes++;
         int minimum;
 
@@ -50,4 +50,36 @@ public class SelectionSort {
         return array.clone();
     }
 
+
+    public int getIteracoes() {
+        return iteracoes;
+    }
+
+    public void setIteracoes(int iteracoes) {
+        this.iteracoes = iteracoes;
+    }
+
+    public int getAtribuicoes() {
+        return atribuicoes;
+    }
+
+    public void setAtribuicoes(int atribuicoes) {
+        this.atribuicoes = atribuicoes;
+    }
+
+    public Long getComparacoes() {
+        return comparacoes;
+    }
+
+    public void setComparacoes(Long comparacoes) {
+        this.comparacoes = comparacoes;
+    }
+
+    public Long getTrocas() {
+        return trocas;
+    }
+
+    public void setTrocas(Long trocas) {
+        this.trocas = trocas;
+    }
 }

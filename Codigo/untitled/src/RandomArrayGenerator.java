@@ -5,16 +5,16 @@ import java.util.Random;
 
 public class RandomArrayGenerator {
 
-    private int[] randomArray;
+    private Integer[] randomArray;
     private int actualSize;
 
     public RandomArrayGenerator() {
-        randomArray = new int[100000];
+        randomArray = new Integer[100000];
         actualSize = 100000;
     }
 
     public RandomArrayGenerator(int size) {
-        this.randomArray = new int[size];
+        this.randomArray = new Integer[size];
         actualSize = size;
     }
 
@@ -29,13 +29,21 @@ public class RandomArrayGenerator {
     public void populateArray (){
 
         Random random = new Random();
-        for (int i = 0; i<actualSize-1; i++){
+        for (int i = 0; i<actualSize; i++){
 
-            int randomNumber = i*random.nextInt(this.actualSize);
-            boolean contains = Arrays.asList(this.randomArray).contains(randomNumber);
-            if (!contains) {
-                this.randomArray[i] = randomNumber;
-            }
+            int randomNumber = (i+1)*random.nextInt(this.actualSize);
+            boolean contains;
+            do {
+                contains = (Arrays.asList(this.randomArray)).contains(randomNumber);
+
+                if (!contains) {
+                    this.randomArray[i] = randomNumber;
+
+                }else{
+                    randomNumber = i*random.nextInt(this.actualSize);
+
+                }
+            }while (contains);
         }
     }
     public boolean contentEquals(int[] arrayToCompare){
@@ -52,4 +60,29 @@ public class RandomArrayGenerator {
         return true;
     }
 
+    public void printArray(){
+        for (int i = 0; i < this.randomArray.length; i++) {
+
+            System.out.println("Posiçao: "+i+" Valor: "+randomArray[i]+"; ");
+
+        }
+
+        System.out.println("-----------------------------------------------------------");
+    }
+
+    public Integer[] getRandomArray() {
+        return randomArray;
+    }
+
+    public void setRandomArray(Integer[] randomArray) {
+        this.randomArray = randomArray;
+    }
+
+    public int getActualSize() {
+        return actualSize;
+    }
+
+    public void setActualSize(Integer actualSize) {
+        this.actualSize = actualSize;
+    }
 }

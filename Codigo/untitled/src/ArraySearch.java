@@ -6,7 +6,7 @@ public class ArraySearch {
         this.comparacoes = 0;
     }
 
-    public int sequencialSearch(int[] requestedArray, int keysearch) {
+    public int sequencialSearch(Integer[] requestedArray, int keysearch) {
         for (int i = 0; i < requestedArray.length; i++) {
             if(requestedArray[i] == keysearch){
                 return i;
@@ -16,13 +16,13 @@ public class ArraySearch {
         return requestedArray.length+1;
     }
 
-    public int binarySearch(int[] requestedArray, int keysearch) {
+    public int binarySearch(Integer[] requestedArray, int keysearch) {
         int tamArray = requestedArray.length /2;
         SelectionSort selection = new SelectionSort();
-        int[] array = selection.sort(requestedArray.clone());
+        Integer[] array = selection.sort(requestedArray.clone());
         return search(array, keysearch, array.length, 0);
     }
-    private int search(int[] array, int keysearch, int max, int min) {
+    private int search(Integer[] array, int keysearch, int max, int min) {
 
         int mid = (min + max) / 2;
 
@@ -46,5 +46,13 @@ public class ArraySearch {
 
         }
 
+    }
+
+    public int getComparacoes() {
+        return comparacoes;
+    }
+
+    public void setComparacoes(int comparacoes) {
+        this.comparacoes = comparacoes;
     }
 }
