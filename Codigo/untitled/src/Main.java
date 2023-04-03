@@ -6,24 +6,6 @@ import java.util.Random;
 
 public class Main {
 
-    //public static boolean writeExcel(){}
-/*
-    PRIMEIRA PARTE
-    a) Crie um método para gerar um vetor contendo 100.000 valores inteiros aleatórios, sem
-    repetição.
-            b) Crie uma cópia do vetor gerado em (a).
-    c) Utilize o método da bolha para ordenar o vetor original, contando quantas operações de
-    comparação de troca e quantas operações de comparação foram realizadas.
-    d) Utilize o método da seleção para ordenar o a cópia (b) do vetor, contando quantas
-    operações de comparação de troca e quantas operações de comparação foram realizadas.
-    e) Repita as operações de (a) até (d) 50 vezes e para este conjunto de testes, registre para cada
-    um dos dois algoritmos:
-            • Maior, menor e média da quantidade de comparações realizadas;
-            • Maior, menor e média da quantidade de trocas realizadas
-
- */
-
-
     public static void primeiraParte(int tamArray) throws IOException {
 
         String path= "c:\\fpaa\\fpaa_questao1.csv";
@@ -120,10 +102,10 @@ public class Main {
         out.newLine();
 
 
-        outRaw.write("POSICAO PROCURADA,CONTADOR DE ESCOLHAS,COMPARACOES,ITERACOES");
+        outRaw.write("POSICAO PROCURADA,CONTADOR DE ESCOLHAS");
         outRaw.newLine();
 
-        out.write("POSICAO PROCURADA /500 ,CONTADOR DE ESCOLHAS,COMPARACOES,ITERACOES");
+        out.write("AGRUPAMENTOS DE POSICAO PROCURADA (/500),CONTADOR DE ESCOLHAS");
         out.newLine();
 
 
@@ -136,47 +118,52 @@ public class Main {
         for (int i = 0; i < loopsNumber ; i++) {
             randomNumber = random.nextInt((tamArray+1000));
             searchPos = search.sequencialSearch(arrayA.getCurrentArray(),randomNumber);
-            int contadorEscolhas;
 
             if(searchPos<=tamArray){
                 vetorResultadosRAW[searchPos]++;
-                contadorEscolhas = vetorResultadosRAW[searchPos];
             }else{
                 vetorResultadosRAW[tamArray+1] ++;
-                contadorEscolhas=vetorResultadosRAW[tamArray+1];
             }
-            String rawLine = (""+searchPos+","+contadorEscolhas+","+search.getComparacoes()+","+search.getIteracoes());
+
+            search = new ArraySearch();
+        }
+
+        for (int i = 0; i < vetorResultadosRAW.length; i++) {
+            int contadorEscolhas = vetorResultadosRAW[i];
+            String rawLine = (""+i+","+contadorEscolhas);
             outRaw.newLine();
             outRaw.write(rawLine);
 
+            int resto = i %500;
+            int resultDivisao = i/500;
 
-            int resto = searchPos %500;
-            int resultDivisao = searchPos/500;
-            boolean estouroArray =  !( resultDivisao<=(tamArray/500) );
-            int groupPos;
-            if (resto == 0 && !estouroArray ){
-                groupPos = (searchPos/500);
-                vetorResultados[groupPos]++;
+            boolean posicaoValida = ( resultDivisao<=(tamArray/500) );
 
-            }else if (!estouroArray){
-                groupPos =((searchPos/500)+1);
-                vetorResultados[groupPos]++;
+            if (resto == 0 && posicaoValida && i!=0 && contadorEscolhas>0){
 
-            }else {
-                groupPos = vetorResultados.length;
-                vetorResultados[groupPos]++;
+                vetorResultados[resultDivisao]=+contadorEscolhas;
+
+            }else if (resto!=0 && posicaoValida && contadorEscolhas>0){
+
+                vetorResultados[(resultDivisao+1)]+=contadorEscolhas;
+
+            }else if(!posicaoValida && contadorEscolhas>0) {
+
+                vetorResultados[vetorResultados.length-1]+=contadorEscolhas;
             }
-            contadorEscolhas=vetorResultados[groupPos];
 
-            String respLine = (""+groupPos+","+contadorEscolhas+","+search.getComparacoes()+","+search.getIteracoes());
+        }
+
+        for (int i = 0; i < vetorResultados.length; i++) {
+
+            int contadorEscolhas = vetorResultados[i];
+
+
+            String respLine = (""+i+","+contadorEscolhas);
             out.newLine();
             out.write(respLine);
-
-            search = new ArraySearch();
-            
-            
-            
         }
+
         outRaw.close();
         out.close();
 
@@ -186,7 +173,7 @@ public class Main {
 
     public static void main(String[] args) {
        try {
-           //primeiraParte(1050);
+           primeiraParte(1050);
            segundoParte(10000,100);
        }catch (Exception e){e.printStackTrace();}
     }
