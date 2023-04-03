@@ -173,8 +173,14 @@ public class Main {
 
     public static void main(String[] args) {
        try {
-           primeiraParte(1050);
-           segundoParte(10000,100);
+
+           //cria a pasta para armazenamento dos dados coletados
+           File file = new File("c:\\fpaa");
+           if (!file.exists()) {
+               file.mkdirs();
+           }
+           primeiraParte(100000);
+           segundoParte(10000,1000000);
        }catch (Exception e){e.printStackTrace();}
     }
 }
