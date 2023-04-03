@@ -1,19 +1,23 @@
 public class ArraySearch {
 
     int comparacoes;
+    int iteracoes;
 
     public ArraySearch() {
         this.comparacoes = 0;
+        this.iteracoes =0;
     }
 
     public int sequencialSearch(Integer[] requestedArray, int keysearch) {
-        for (int i = 0; i < requestedArray.length; i++) {
+        for (int i = 0; i < requestedArray.length-1; i++) {
+            iteracoes++;
             if(requestedArray[i] == keysearch){
+                comparacoes++;
                 return i;
             }
             comparacoes++;
         }
-        return requestedArray.length+1;
+        return requestedArray.length;
     }
 
     public int binarySearch(Integer[] requestedArray, int keysearch) {
@@ -54,5 +58,13 @@ public class ArraySearch {
 
     public void setComparacoes(int comparacoes) {
         this.comparacoes = comparacoes;
+    }
+
+    public int getIteracoes() {
+        return iteracoes;
+    }
+
+    public void setIteracoes(int iteracoes) {
+        this.iteracoes = iteracoes;
     }
 }
