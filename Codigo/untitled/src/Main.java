@@ -181,6 +181,7 @@ public class Main {
            }
            primeiraParte(100000);
            segundoParte(10000,1000000);
+           System.out.println("FIM");
        }catch (Exception e){e.printStackTrace();}
     }
 }
