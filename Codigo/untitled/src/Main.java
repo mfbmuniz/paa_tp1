@@ -112,11 +112,14 @@ public class Main {
         arrayA.sortPopulateArray();
         arrayA.printArray();
         int searchPos;
-        int randomNumber;
+        int randomNumber=0;
         int groupResultIndex;
 
         for (int i = 0; i < loopsNumber ; i++) {
-            randomNumber = random.nextInt((tamArray+1000));
+
+            do{
+                randomNumber = random.nextInt((tamArray + 1000));
+            }while (randomNumber <= 0);
             searchPos = search.sequencialSearch(arrayA.getCurrentArray(),randomNumber);
 
             if(searchPos<=tamArray){
@@ -141,7 +144,7 @@ public class Main {
 
             if (resto == 0 && posicaoValida && i!=0 && contadorEscolhas>0){
 
-                vetorResultados[resultDivisao]=+contadorEscolhas;
+                vetorResultados[resultDivisao]+=contadorEscolhas;
 
             }else if (resto!=0 && posicaoValida && contadorEscolhas>0){
 
@@ -179,7 +182,7 @@ public class Main {
            if (!file.exists()) {
                file.mkdirs();
            }
-           primeiraParte(100000);
+           //primeiraParte(100000);
            segundoParte(10000,1000000);
            System.out.println("FIM");
        }catch (Exception e){e.printStackTrace();}
